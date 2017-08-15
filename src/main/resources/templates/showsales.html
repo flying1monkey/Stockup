@@ -31,10 +31,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"/>
     <![endif]-->
 </head>
-<body>
-<body id="page-top">
 
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<body id="page-top" />
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top" />
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -46,20 +46,30 @@
         </div><br>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="header content test ">
-            <table border="1">
-            <tr th:each="sale : ${purchases}">
-                <td th:text="${sale.productName}"/>
-                <td th:text="${sale.productId}"/>
-                <td th:text="${sale.quantity}"/>
-                <td th:text="${sale.cost}"/>
-            </tr>
+        <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product ID</th>
+                        <th>Quantity</th>
+                        <th>Costs</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                     <tr th:each="sale : ${purchases}">
+                            <td th:text="${sale.productName}"/>
+                            <td th:text="${sale.productId}"/>
+                            <td th:text="${sale.quantity}"/>
+                            <td th:text="${sale.cost}"/>
+                     </tr>
+                    </tbody>
             </table>
         </div>
         <!-- /.container-fluid -->
 </nav>
-
-<header >
+<header>
+</body>
 </html>
 
 
