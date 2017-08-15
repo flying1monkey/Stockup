@@ -70,6 +70,7 @@
         <table>
 
         <form action="#" th:action="@{/newproduct}" th:object="${newproduct}" method="post">
+            <table>
             <p>Product ID: <input type="text" th:field="*{productId}"/>
                 <span th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}">Problem with "id"</span></p>
             <p>Product name: <input type="text" th:field="*{productName}"/>
