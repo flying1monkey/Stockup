@@ -16,7 +16,8 @@
 
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+          rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"/>
 
     <!-- Plugin CSS -->
@@ -42,7 +43,8 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="index.html"> Home </a>
@@ -69,22 +71,58 @@
     <!-- /.container-fluid -->
 </nav>
 
-<header >
-    <div class="header-content test">
-        <form action="#" th:action="@{/newproduct}" th:object="${newproduct}" method="post">
-            <p>Product ID: <input type="text" th:field="*{productId}"/>
-                <span th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}">Problem with "id"</span></p>
-            <p>Product name: <input type="text" th:field="*{productName}"/>
-                <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Problem with "name"</span></p>
-            <p>Price: <input type="text" th:field="*{price}"/>
-                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Problem with "price"</span></p>
-            <p>Description: <input type="text" th:field="*{description}"/>
-                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Problem with "description"</span></p>
-            <p>Quantity: <input type="number" th:field="*{quantity}"/>
-                <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Problem with "quantity"</span></p>
-            <p><input type="submit" value="Submit" /><input type="reset" value="Reset"/></p>
-        </form>
-    </div>
+<header>
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Add a new product</h2>
+                    </div>
+
+                    <form action="#" th:action="@{/newproduct}" th:object="${newproduct}" method="post">
+                        <table cellspacing="30" align="center" class="myAlignment">
+                            <tr>
+                                <td>Product Id:</td>
+                                <td><input type="text" th:value="${fakenumber}" disabled="true"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Product name:</td>
+                                <td><input type="text" th:field="*{productName}"/>
+                                    <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Price:</td>
+                                <td>
+                                    <input type="text" th:field="*{price}"/>
+                                    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>
+                                    <input type="text" th:field="*{description}"/>
+                                    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quantity:</td>
+                                <td>
+                                    <input type="number" th:field="*{quantity}"/>
+                                    <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <p><input type="submit" value="Submit"/><input type="reset" value="Reset"/></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </header>
 
 

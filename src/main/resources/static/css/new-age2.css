@@ -459,3 +459,11 @@ header .test{
     height: 50px;
     border-radius: 3px;
 }
+
+.myAlignment {
+    text-align: left;
+}
+
+input {
+    color: black;
+}

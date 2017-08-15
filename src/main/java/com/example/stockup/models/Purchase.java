@@ -1,37 +1,25 @@
 package com.example.stockup.models;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Range;
+import javax.persistence.*;
 
 @Entity
 public class Purchase
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue
+    private Long productId;
 
-    //@NotEmpty
-    private String productId;
     private double cost;
-    //@NotNull
+    @Range(min=1)
     private int quantity;
     private String productName;
 
-    private static double tax = 1.06;
 
-    public String getProductId()
+    public Long getProductId()
     {
         return productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
     }
 
     public double getCost()
@@ -64,8 +52,5 @@ public class Purchase
         this.productName = productName;
     }
 
-    public static double getTax()
-    {
-        return tax;
-    }
+
 }

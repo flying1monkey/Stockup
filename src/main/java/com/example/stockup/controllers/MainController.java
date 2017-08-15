@@ -38,6 +38,9 @@ public class MainController
     @GetMapping("/newproduct")
     public String newProduct(Model model)
     {
+        //assumes no products were deleted, therefor the next ID will be 1 more than the number of items in the repo
+        long nextId=prodRepo.count()+1;
+        model.addAttribute("fakenumber", nextId);
         model.addAttribute("newproduct", new Product());
         return "newproduct";
     }
@@ -72,19 +75,16 @@ public class MainController
     public String printReceipt(@ModelAttribute ("productbought") Purchase purchase, Model model)
     {
 
-        Iterator<Product> prods = prodRepo.findAll().iterator();
-        while(prods.hasNext())
+        if(prodRepo.exists(purchase.getProductId()))
         {
-            Product prod=prods.next();
-            if(prod.getProductId().equalsIgnoreCase(purchase.getProductId()))
-            {
-                purchase.setProductName(prod.getProductName());
-                purchase.setCost(prod.getPrice()*purchase.getQuantity()*1.06);
-                //change amount in prodRepo
-                prod.setQuantity(prod.getQuantity()-purchase.getQuantity());
-                prodRepo.save(prod);
-            }
+            Product prod = prodRepo.findOne(purchase.getProductId());
+            purchase.setProductName(prod.getProductName());
+            purchase.setCost(prod.getPrice()*purchase.getQuantity()*1.06);
+            //change amount in prodRepo
+            prod.setQuantity(prod.getQuantity()-purchase.getQuantity());
+            //prodRepo.save(prod);
         }
+
         purchaseRepo.save(purchase);
         model.addAttribute("item",purchase);
         return "printreceipt";
