@@ -16,8 +16,7 @@
 
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
-          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"/>
 
     <!-- Plugin CSS -->
@@ -43,8 +42,7 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="index.html"> Home </a>
@@ -72,23 +70,30 @@
 </nav>
 
 <header>
+
     <section id="features" class="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>Here's your purchase</h2>
+                        <h2>Your receipt:</h2>
                     </div>
-                    Name: <span th:text="${item.getProductName()}"/>
-                    <br/>
-                    Number: <span th:text="${item.getQuantity()}"/>
-                    <br/>
-                    Total cost: <span th:text="${item.getCost()}"/>
+                    <table >
+                        <tr>
+                            <th>Product:</th>
+                            <th>Quantity:</th>
+                            <th>Cost:</th>
+                        </tr>
+                        <tr>
+                            <td th:text="${productbought.productName}"/>
+                            <td th:text="${productbought.quantity}"/>
+                            <td th:text="${productbought.cost}"/>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
-
 </header>
 
 
@@ -113,4 +118,5 @@
 </body>
 
 </html>
+
 

@@ -13,7 +13,7 @@ public class Product
 {
     @Id
     @GeneratedValue
-    private Long productId;
+    private long productId;
     @Size(min = 2, max = 30)
     private String productName;
     @NotNull
@@ -23,9 +23,14 @@ public class Product
     @NotNull
     private int quantity;
 
-    public Long getProductId()
+    public long getProductId()
     {
         return productId;
+    }
+
+    public void setProductId(long productId)
+    {
+        this.productId = productId;
     }
 
     public String getProductName()

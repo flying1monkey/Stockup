@@ -157,7 +157,7 @@ header {
     /* Chrome 10-25, Safari 5.1-6 */
     background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: #000000;
+    color: white;
 }
 header .header-content {
     text-align: center;
@@ -413,7 +413,7 @@ footer ul li a.active {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    color: black;
+    color: white;
     background-color: #fdcc52;
     border-color: #fdcc52;
 }
@@ -459,6 +459,15 @@ header .test{
     height: 50px;
     border-radius: 3px;
 }
-body{
-    text-color: black;
+
+.myAlignment {
+    text-align: left;
+}
+
+input {
+    color: black;
+}
+
+table {
+    align-self: center;
 }

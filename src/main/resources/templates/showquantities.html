@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
-<head><meta charset="utf-8"/>
+
+<head>
+
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
@@ -30,8 +33,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"/>
     <![endif]-->
+
 </head>
-<body>
+
 <body id="page-top">
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -43,26 +47,83 @@
             </button>
             <a class="navbar-brand page-scroll" href="index.html"> Home </a>
             <a class="navbar-brand page-scroll" href="makepurchase.html"> Make a purchase </a>
-        </div><br>
+        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-center">
-            <div th:each="prod: ${prods}">
-                <p>Product Id: <span th:text="${prod.getProductId()}"/></p>
-                <p>Product name: <span th:text="${prod.getProductName()}"/></p>
-                <p>Product price: <span th:text="${prod.getPrice()}"/></p>
-                <p>Product description: <span th:text="${prod.getDescription()}"/></p>
-                <p>Product quantity: <span th:text="${prod.getQuantity()}"/></p>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <a th:href="@{/newproduct.html}">Add product</a>
+                </li>
+                <li>
+                    <a href="showquantities.html">Show stock</a>
+                </li>
+                <li>
+                    <a href="showsales.html">Show sales</a>
+                </li>
+            </ul>
+        </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
 
-<header>
+<header >
+    <!--<div class="header-content test">-->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>What do you want to do?</h2>
+                    </div>
+                    <table border="1">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                        </tr>
+                        <tr th:each="prod : ${prods}">
+                            <td th:text="${prod.productId}"/>
+                            <td th:text="${prod.productName}"/>
+                            <td th:text="${prod.description}"/>
+                            <td th:text="${prod.price}" />
+                            <td th:text="${prod.quantity}"/>
+                            <td><a th:href="@{/update/{id}(id=${prod.productId})}">Modify</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!--</div>-->
+</header>
+
+
+
+<footer>
+    <div class="container">
+        <p>Jerilyn and Jesse</p>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="lib/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="js/new-age.min.js"></script>
 
 </body>
+
 </html>
 

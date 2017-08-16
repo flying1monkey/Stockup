@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
+
 <head>
 
     <meta charset="utf-8"/>
@@ -24,7 +25,7 @@
     <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css"/>
 
     <!-- Theme CSS -->
-    <link href="css/new-age2.css" rel="stylesheet"/>
+    <link href="../css/new-age2.css" rel="stylesheet"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,8 +33,10 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"/>
     <![endif]-->
+
 </head>
-<body>
+
+<body id="page-top">
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -65,25 +68,38 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<header >
-    <div class="header-content test">
 
-        <form action="#" th:action="@{/newproduct}" th:object="${newproduct}" method="post">
-            <table>
-            <p>Product ID: <input type="text" th:field="*{productId}"/>
-                <span th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}">Problem with "id"</span></p>
-            <p>Product name: <input type="text" th:field="*{productName}"/>
-                <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Problem with "name"</span></p>
-            <p>Price: <input type="text" th:field="*{price}"/>
-                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Problem with "price"</span></p>
-            <p>Description: <input type="text" th:field="*{description}"/>
-                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Problem with "description"</span></p>
-            <p>Quantity: <input type="number" th:field="*{quantity}"/>
-                <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Problem with "quantity"</span></p>
-            <p><input type="submit" value="Submit" /><input type="reset" value="Go Back "/></p>
-            </table>
-        </form>
+<header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>The new product:</h2>
+                    </div>
+                    <table border="1">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                        </tr>
+                        <tr>
+                            <td th:text="${newproduct.productId}"/>
+                            <td th:text="${newproduct.productName}"/>
+                            <td th:text="${newproduct.description}"/>
+                            <td th:text="${newproduct.price}"/>
+                            <td th:text="${newproduct.quantity}"/>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+</section>
 </header>
+
 
 <footer>
     <div class="container">
@@ -104,4 +120,7 @@
 <script src="js/new-age.min.js"></script>
 
 </body>
+
 </html>
+
+

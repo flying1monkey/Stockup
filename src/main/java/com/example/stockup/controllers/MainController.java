@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Iterator;
@@ -38,9 +36,6 @@ public class MainController
     @GetMapping("/newproduct")
     public String newProduct(Model model)
     {
-        //assumes no products were deleted, therefor the next ID will be 1 more than the number of items in the repo
-        long nextId=prodRepo.count()+1;
-        model.addAttribute("fakenumber", nextId);
         model.addAttribute("newproduct", new Product());
         return "newproduct";
     }
@@ -48,6 +43,8 @@ public class MainController
     @PostMapping("/newproduct")
     public String productSubmit(@Valid @ModelAttribute("newproduct") Product product, BindingResult bindingResult)
     {
+        System.out.println(product.getProductId());
+
         if(bindingResult.hasErrors())
         {
             return "newproduct";
@@ -56,11 +53,19 @@ public class MainController
         return "shownewprod";
     }
 
+    @GetMapping("/update/{id}")
+    public String updateProduct(@PathVariable("id") long id, Model model){
+        System.out.println(id);
+        model.addAttribute("newproduct", prodRepo.findOne(id));
+
+        return "newproduct";
+    }
+
     @GetMapping("/showquantities")
     public String showStock(Model model)
     {
-        Iterable <Product> prods = prodRepo.findAll();
-        model.addAttribute("prods", prods);
+        Iterable <Product> prodList = prodRepo.findAll();
+        model.addAttribute("prods", prodList);
         return "showquantities";
     }
 
@@ -74,6 +79,7 @@ public class MainController
     @PostMapping("/makepurchase")
     public String printReceipt(@ModelAttribute ("productbought") Purchase purchase, Model model)
     {
+        System.out.println("ID: "+purchase.getProductId());
 
         if(prodRepo.exists(purchase.getProductId()))
         {

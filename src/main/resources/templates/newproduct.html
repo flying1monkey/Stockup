@@ -12,7 +12,7 @@
     <title>New Age - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css"/>
 
     <!-- Theme CSS -->
-    <link href="css/new-age2.css" rel="stylesheet"/>
+    <link href="../css/new-age2.css" rel="stylesheet"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,13 +56,13 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li>
-                    <a href="newproduct.html">Add product</a>
+                    <a th:href="@{/newproduct.html}">Add product</a>
                 </li>
                 <li>
-                    <a href="showquantities.html">Show stock</a>
+                    <a th:href="@{/showquantities.html}">Show stock</a>
                 </li>
                 <li>
-                    <a href="showsales.html">Show sales</a>
+                    <a th:href="@{/showsales.html}">Show sales</a>
                 </li>
             </ul>
         </div>
@@ -81,12 +81,8 @@
                     </div>
 
                     <form action="#" th:action="@{/newproduct}" th:object="${newproduct}" method="post">
+                        <input type="hidden" th:field="*{productId}" />
                         <table cellspacing="30" align="center" class="myAlignment">
-                            <tr>
-                                <td>Product Id:</td>
-                                <td><input type="text" th:value="${fakenumber}" disabled="true"/>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>Product name:</td>
                                 <td><input type="text" th:field="*{productName}"/>
